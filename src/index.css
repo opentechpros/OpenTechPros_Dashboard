@@ -1,0 +1,134 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* OpenTechPros Dark Theme */
+    --background: 335 95% 2%;
+    --foreground: 300 15% 92%;
+
+    --card: 280 45% 10%;
+    --card-foreground: 300 15% 92%;
+
+    --popover: 280 50% 8%;
+    --popover-foreground: 300 15% 92%;
+
+    --primary: 280 43% 55%;
+    --primary-foreground: 300 15% 98%;
+
+    --secondary: 280 35% 20%;
+    --secondary-foreground: 300 15% 92%;
+
+    --muted: 280 35% 15%;
+    --muted-foreground: 280 10% 60%;
+
+    --accent: 290 45% 65%;
+    --accent-foreground: 300 15% 98%;
+
+    --destructive: 0 70% 55%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 280 30% 18%;
+    --input: 280 30% 18%;
+    --ring: 280 43% 55%;
+
+    --radius: 0.75rem;
+
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(280, 43%, 55%), hsl(290, 45%, 65%));
+    --gradient-glow: linear-gradient(135deg, hsl(280, 60%, 45%), hsl(290, 60%, 55%));
+    --gradient-bg: linear-gradient(180deg, hsl(335, 95%, 2%), hsl(280, 50%, 8%));
+
+    /* Glows & Shadows */
+    --glow-primary: 0 0 30px hsl(280, 43%, 55% / 0.4);
+    --glow-accent: 0 0 40px hsl(290, 45%, 65% / 0.3);
+    --shadow-card: 0 8px 32px hsl(280, 50%, 5% / 0.5);
+    --shadow-elevated: 0 20px 60px hsl(280, 50%, 5% / 0.7);
+
+    /* Sidebar */
+    --sidebar-background: 280 50% 6%;
+    --sidebar-foreground: 300 15% 85%;
+    --sidebar-primary: 280 43% 55%;
+    --sidebar-primary-foreground: 300 15% 98%;
+    --sidebar-accent: 280 40% 12%;
+    --sidebar-accent-foreground: 300 15% 92%;
+    --sidebar-border: 280 30% 15%;
+    --sidebar-ring: 280 43% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  }
+}
+
+@layer utilities {
+  .glass-card {
+    @apply bg-card/40 backdrop-blur-xl border border-border/50;
+  }
+
+  .glow-primary {
+    box-shadow: var(--glow-primary);
+  }
+
+  .glow-accent {
+    box-shadow: var(--glow-accent);
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-primary);
+  }
+
+  .gradient-border {
+    position: relative;
+    background: hsl(var(--card));
+    border-radius: var(--radius);
+  }
+
+  .gradient-border::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: var(--radius);
+    padding: 1px;
+    background: var(--gradient-primary);
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    overflow-x: hidden;
+    width: 100%;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    overflow-x: hidden;
+    width: 100%;
+  }
+}
